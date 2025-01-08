@@ -94,6 +94,22 @@
     </div>
 
     <div>
+        <x-input-label for="color" :value="__('Color')" />
+        <select wire:model="color" id="color"
+            class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
+
+
+            <option value="">-Seleccione color--</option>
+            @foreach ($colores as $color)
+                <option value="{{ $color->id }}">{{ $color->color }}</option>
+            @endforeach
+        </select>
+        @error('color')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </div>
+
+    <div>
         <x-input-label for="kilometros" :value="__('Kilometros')" />
         <x-text-input id="kilometros" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" type="text" wire:model="empresa" :value="old('kilometros')"
             required placeholder="50, 100, 200..." type="number"/>
@@ -107,7 +123,7 @@
         <x-input-label for="precio" :value="__('Precio')" />
         <x-text-input id="precio" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" wire:model="empresa" :value="old('kilometros')"
             required placeholder="2000, 4000, 5500..." type="number"/>
-        @error('kilometros')
+        @error('precio')
             <livewire:mostrar-alerta :message="$message" />
         @enderror
     </div>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\MarcasVehiculosSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call(MarcasVehiculosSeeder::class);
+        $this->call(CarroceriasSeeder::class);
     }
 }

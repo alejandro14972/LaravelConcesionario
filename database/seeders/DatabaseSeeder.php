@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        //$this->call(MarcasVehiculosSeeder::class);
-        //$this->call(CarroceriasSeeder::class);
+        $this->call(MarcasVehiculosSeeder::class);
+        $this->call(CarroceriasSeeder::class);
         $this->call(UbicacionProvinciaVehiculoSeeder::class);
+        $this->call(modeloVehiculoSeeder::class);
     }
 }

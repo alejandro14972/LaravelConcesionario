@@ -11,7 +11,7 @@
 
 
     <div>
-        <x-input-label for="combustible" :value="__('Tipo de combustible')" />
+        <x-input-label for="combustible" :value="__('Tipo de carroceria')" />
         <select wire:model="combustible" id="combustible"
             class=" border-gray-300 dark:border-gray-700   rounded-md shadow-sm w-full">
             <option value="">-Seleccione--</option>
@@ -62,6 +62,21 @@
         @enderror
     </div>
 
+
+    <div class="mt-4">
+        <x-input-label for="modelo" :value="__('Modelo')" />
+        <select wire:model="modelo" id="modelo" class="border-gray-300 dark:border-gray-700 rounded-md shadow-sm w-full">
+            <option value="">-Seleccione--</option>
+            @foreach ($modelos as $modelo)
+                <option value="{{ $modelo->id }}">{{ $modelo->nombre_modelo }}</option>
+            @endforeach
+        </select>
+        @error('modelo')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </div>
+
+
     <div>
         <x-input-label for="ubicacion" :value="__('Ubicacion')" />
         <select wire:model="ubicacion" id="ubicacion"
@@ -80,15 +95,26 @@
 
     <div>
         <x-input-label for="kilometros" :value="__('Kilometros')" />
-        <x-text-input id="kilometros" class="block mt-1 w-full" type="text" wire:model="empresa" :value="old('kilometros')"
+        <x-text-input id="kilometros" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" type="text" wire:model="empresa" :value="old('kilometros')"
             required placeholder="50, 100, 200..." type="number"/>
         @error('kilometros')
             <livewire:mostrar-alerta :message="$message" />
         @enderror
     </div>
 
+
     <div>
-        <x-input-label for="año" :value="__('año')" />
+        <x-input-label for="precio" :value="__('Precio')" />
+        <x-text-input id="precio" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" wire:model="empresa" :value="old('kilometros')"
+            required placeholder="2000, 4000, 5500..." type="number"/>
+        @error('kilometros')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </div>
+
+
+    <div>
+        <x-input-label for="año" :value="__('Año de fabricación')" />
         <x-text-input id="año" class="block mt-1 w-full" type="date" wire:model="ultimo_dia" :value="old('año')"
             required />
         @error('año')
@@ -100,7 +126,7 @@
         <x-input-label for="descripcion" :value="__('Descripción')" />
         <textarea id="descripcion" wire:model="descripcion"
             class=" border-gray-300 dark:border-gray-700  dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm w-full"
-            rows="7" placeholder="Descripción general...">
+            rows="7" required>
         </textarea>
         @error('descripcion')
             <livewire:mostrar-alerta :message="$message" />

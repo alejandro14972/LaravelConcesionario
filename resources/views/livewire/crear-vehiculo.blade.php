@@ -44,6 +44,8 @@
         @enderror
     </div>
 
+    
+
     <div>
         <x-input-label for="marca" :value="__('Marca')" />
         <select wire:model="marca" id="marca"
@@ -61,9 +63,25 @@
     </div>
 
     <div>
+        <x-input-label for="ubicacion" :value="__('Ubicacion')" />
+        <select wire:model="ubicacion" id="ubicacion"
+            class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
+
+
+            <option value="">-Seleccione ubicacion--</option>
+            @foreach ($provincias as $ubicacion)
+                <option value="{{ $ubicacion->id }}">{{ $ubicacion->provincia }}</option>
+            @endforeach
+        </select>
+        @error('marca')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </div>
+
+    <div>
         <x-input-label for="kilometros" :value="__('Kilometros')" />
         <x-text-input id="kilometros" class="block mt-1 w-full" type="text" wire:model="empresa" :value="old('kilometros')"
-            required placeholder="50, 100, 200..." />
+            required placeholder="50, 100, 200..." type="number"/>
         @error('kilometros')
             <livewire:mostrar-alerta :message="$message" />
         @enderror

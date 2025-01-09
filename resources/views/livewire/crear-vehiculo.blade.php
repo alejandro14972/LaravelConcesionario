@@ -1,11 +1,11 @@
-<form action="" method="post" class="md:w-1/2 space-y-5" wire:submit.prevent='crearVacante' novalidate>
+<form action="" method="post" class="md:w-1/2 space-y-5" wire:submit.prevent='crearVehiculo' novalidate>
     <div>
         <x-input-label for="titulo" :value="__('Título vehiculo')" />
         <x-text-input id="titulo" class="block mt-1 w-full" type="text" wire:model="titulo" :value="old('titulo')" required
             placeholder="Titulo vehiculo" />
 
         @error('titulo')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
@@ -22,7 +22,7 @@
 
 
         @error('combustible')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
@@ -40,7 +40,7 @@
 
 
         @error('combustible')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
@@ -58,7 +58,7 @@
             @endforeach
         </select>
         @error('marca')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
@@ -72,7 +72,7 @@
             @endforeach
         </select>
         @error('modelo')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
@@ -89,7 +89,7 @@
             @endforeach
         </select>
         @error('marca')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
@@ -105,47 +105,47 @@
             @endforeach
         </select>
         @error('color')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
     <div>
         <x-input-label for="kilometros" :value="__('Kilometros')" />
-        <x-text-input id="kilometros" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" type="text" wire:model="empresa" :value="old('kilometros')"
+        <x-text-input id="kilometros" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" type="text" wire:model="kilometros" :value="old('kilometros')"
             required placeholder="50, 100, 200..." type="number"/>
         @error('kilometros')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
 
     <div>
         <x-input-label for="precio" :value="__('Precio')" />
-        <x-text-input id="precio" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" wire:model="empresa" :value="old('kilometros')"
+        <x-text-input id="precio" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" wire:model="precio" :value="old('kilometros')"
             required placeholder="2000, 4000, 5500..." type="number"/>
         @error('precio')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
 
     <div>
         <x-input-label for="año" :value="__('Año de fabricación')" />
-        <x-text-input id="año" class="block mt-1 w-full" type="date" wire:model="ultimo_dia" :value="old('año')"
+        <x-text-input id="año" class="block mt-1 w-full" type="date" wire:model="fabricacion" :value="old('año')"
             required />
         @error('año')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
     <div>
         <x-input-label for="descripcion" :value="__('Descripción')" />
-        <textarea id="descripcion" wire:model="descripcion"
+        <textarea id="descripcion" wire:model="description"
             class=" border-gray-300 dark:border-gray-700  dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm w-full"
             rows="7" required>
         </textarea>
         @error('descripcion')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 
@@ -163,7 +163,7 @@
 
 
         @error('imagen')
-            <livewire:mostrar-alerta :message="$message" />
+            <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
 

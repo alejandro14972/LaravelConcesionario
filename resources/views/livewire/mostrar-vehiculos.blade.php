@@ -9,6 +9,7 @@
                 <p class="text-gray-700"><strong>Precio:</strong> {{ $vehiculo->precio }} €</p>
                 <p class="text-gray-700"><strong>Fabricación:</strong> {{ $vehiculo->fabricacion }}</p>
                 <p class="text-gray-700"><strong>Ubicación:</strong> {{ $vehiculo->nombreUbicacion->provincia }}</p>
+                <p class="text-gray-700"><strong>Kilometros:</strong> {{ $vehiculo->kilometros}} km</p>
             </div>
             
         

@@ -21,6 +21,7 @@ class Vehiculo extends Model
         'fabricacion',
         'precio',
         'description',
+        'kilometros',
         'imagen',
         'disponible',
         'user_id',

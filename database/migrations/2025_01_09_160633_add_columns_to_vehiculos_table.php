@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('color_id')->constrained('color_vehiculo')->onDelete('cascade');
             $table->foreignId('ubicacion_id')->constrained('ubicacion_provincia_vehiculos')->onDelete('cascade');
             $table->date('fabricacion');
+            $table->integer('kilometros');
             $table->float('precio');
             $table->text('description');
             $table->string('imagen');

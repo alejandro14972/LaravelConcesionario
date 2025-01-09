@@ -6,6 +6,7 @@ use App\Models\modelo;
 use Livewire\Component;
 
 use App\Models\ColorVehiculo;
+use Livewire\WithFileUploads;
 use App\Models\ModeloVehiculo;
 use App\Models\marcasvehiculos;
 use App\Models\carrocerias_vehiculos;
@@ -25,6 +26,9 @@ public $fabricacion;
 public $precio;
 public $description;
 public $imagen;
+
+
+use WithFileUploads; //uso poara sunir imagenes del form
 
 
 protected $rules = [

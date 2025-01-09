@@ -11,6 +11,7 @@ use App\Models\ModeloVehiculo;
 use App\Models\marcasvehiculos;
 use App\Models\carrocerias_vehiculos;
 use App\Models\ubicacion_provincia_vehiculos;
+use App\Models\Vehiculo;
 
 class CrearVehiculo extends Component{
 
@@ -30,7 +31,7 @@ public $imagen;
 
 use WithFileUploads; //uso poara sunir imagenes del form
 
-
+//nombre de las reglas de validacion wire:model
 protected $rules = [
     'titulo' => 'required|string',
     'combustible' => 'required|string',
@@ -47,7 +48,35 @@ protected $rules = [
 
 
 public function crearVehiculo(){
+
     $datos = $this->validate();
+    //dd($datos);
+    //alamcenar imagen
+    $imagen = $this->imagen->store('public/vehiculos');
+    $nombreImg = str_replace('public/vehiculos/', '', $imagen);
+    //dd($imagen);
+    //dd($nombreImg);
+
+    //crear vehiculo
+    Vehiculo::create([
+        'titulo' => $datos['titulo'],
+        'combustible' => $datos['combustible'],
+        'marca_id' => $datos['marca'],
+        'modelo_id' => $datos['modelo'],
+        'carroceria_id' => $datos['carroceria'],
+        'color_id' => $datos['color'],
+        'ubicacion_id' => $datos['ubicacion'],
+        'fabricacion' => $datos['fabricacion'],
+        'precio' => $datos['precio'],
+        'description' => $datos['description'],
+        'imagen' => $nombreImg,
+        'user_id' => auth()->user()->id,
+    ]);
+
+    //crear mensaje de exito
+
+    //redirect a la pagina de inicio
+
 
 }
 

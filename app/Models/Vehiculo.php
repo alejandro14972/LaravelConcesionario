@@ -26,4 +26,31 @@ class Vehiculo extends Model
         'user_id',
     ];
 
+
+    //relacion uno a muchos inversa. se usa belongsTo porque la relacion es de uno a muchos inversa
+    public function nombreMarca()
+    {
+        return $this->belongsTo(MarcasVehiculos::class, 'marca_id');
+    }
+
+    public function nombreModelo()
+    {
+        return $this->belongsTo(ModeloVehiculo::class, 'modelo_id');
+    }
+
+    public function nombreCarroceria()
+    {
+        return $this->belongsTo(carrocerias_vehiculos::class, 'carroceria_id');
+    }
+
+    public function nombreColor()
+    {
+        return $this->belongsTo(ColorVehiculo::class, 'color_id');
+    }
+
+    public function nombreUbicacion()
+    {
+        return $this->belongsTo(ubicacion_provincia_vehiculos::class, 'ubicacion_id');
+    }
+
 }

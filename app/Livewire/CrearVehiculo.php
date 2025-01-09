@@ -74,10 +74,10 @@ public function crearVehiculo(){
     ]);
 
     //crear mensaje de exito
+    session()->flash('mensaje', 'Vehiculo creado con exito');
 
     //redirect a la pagina de inicio
-
-
+    return redirect()->route('vehiculos.index');
 }
 
 

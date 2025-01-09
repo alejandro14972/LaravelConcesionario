@@ -1,7 +1,13 @@
 <form action="" method="post" class="md:w-1/2 space-y-5" wire:submit.prevent='crearVehiculo' novalidate>
     <div>
         <x-input-label for="titulo" :value="__('Título vehiculo')" />
-        <x-text-input id="titulo" class="block mt-1 w-full" type="text" wire:model="titulo" :value="old('titulo')" required
+        <x-text-input 
+            id="titulo" 
+            class="block mt-1 w-full" 
+            type="text" 
+            wire:model="titulo" 
+            :value="old('titulo')" 
+            required
             placeholder="Titulo vehiculo" />
 
         @error('titulo')
@@ -11,9 +17,13 @@
 
 
     <div>
-        <x-input-label for="combustible" :value="__('Tipo de carroceria')" />
-        <select wire:model="combustible" id="combustible"
-            class=" border-gray-300 dark:border-gray-700   rounded-md shadow-sm w-full">
+        <x-input-label 
+            for="carroceria" 
+            :value="__('Tipo de carroceria')" />
+        <select 
+            wire:model="carroceria" 
+            id="carroceria"
+            class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
             <option value="">-Seleccione--</option>
             @foreach ($carrocerias as $carroceria)
                 <option value="{{ $carroceria->id }}">{{ $carroceria->tipo }}</option>
@@ -28,14 +38,18 @@
 
 
     <div>
-        <x-input-label for="combustible" :value="__('Tipo de combustible')" />
-        <select wire:model="combustible" id="combustible"
-            class=" border-gray-300 dark:border-gray-700   rounded-md shadow-sm w-full">
-            <option value="">-Seleccione--</option>
-            <option value="">Gasolina</option>
-            <option value="">Diesel</option>
-            <option value="">Eléctrico</option>
-          
+        <x-input-label 
+            for="combustible" 
+            :value="__('Tipo de combustible')" />
+        <select 
+            wire:model="combustible" 
+            id="combustible"
+            class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
+            <option value="0">-Seleccione--</option>
+            <option value="Gasolina">Gasolina</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Electrico">Eléctrico</option>
+            <option value="Hibrido">Hibrido</option>
         </select>
 
 

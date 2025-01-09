@@ -22,6 +22,7 @@ public $marca;
 public $modelo;
 public $carroceria;
 public $color;
+public $kilometros;
 public $ubicacion;
 public $fabricacion;
 public $precio;
@@ -39,6 +40,7 @@ protected $rules = [
     'modelo' => 'required|string',
     'carroceria' => 'required|string',
     'color' => 'required|string',
+    'kilometros' => 'required|numeric',
     'ubicacion' => 'required|string',
     'fabricacion' => 'required|date',
     'precio' => 'required|numeric',
@@ -65,6 +67,7 @@ public function crearVehiculo(){
         'modelo_id' => $datos['modelo'],
         'carroceria_id' => $datos['carroceria'],
         'color_id' => $datos['color'],
+        'kilometros' => $datos['kilometros'],
         'ubicacion_id' => $datos['ubicacion'],
         'fabricacion' => $datos['fabricacion'],
         'precio' => $datos['precio'],

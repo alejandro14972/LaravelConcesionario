@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehiculoController;
 use App\Models\Vehiculo;
@@ -11,6 +12,11 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [VehiculoController::class, 'index'])->middleware(['auth', 'verified'])->name('vehiculos.index');
 Route::get('/vehiculos/create', [VehiculoController::class, 'create'])->middleware(['auth', 'verified'])->name('vehiculos.create');
+
+
+//empresa
+Route::get('/empresa', [EmpresaController::class, 'index'])->middleware(['auth', 'verified'])->name('empresa.index');
+Route::get('/empresa/create', [EmpresaController::class, 'create'])->middleware(['auth', 'verified'])->name('empresa.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -44,6 +44,10 @@
                             {{ __('Editar usuario') }}
                         </x-dropdown-link>
 
+                        <x-dropdown-link :href="route('empresa.index')">
+                            {{ __('Mi empresa') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

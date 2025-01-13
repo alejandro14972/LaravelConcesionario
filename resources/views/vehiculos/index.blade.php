@@ -18,6 +18,16 @@
             @endif
 
 
+            {{-- mensaje policy --}}
+            @if (@session()->has('mensajeError'))
+                
+            <div class="bg-red-500 p-2 text-white rounded mb-4">
+                {{ session('mensajeError') }}
+            </div>
+          
+            @endif
+
+
             <livewire:mostrar-vehiculos />
             
         </div>

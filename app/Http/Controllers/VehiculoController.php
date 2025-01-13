@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+
 
 class VehiculoController extends Controller
 {
@@ -48,9 +52,16 @@ class VehiculoController extends Controller
     {
         //
         //dd($vehiculo);
+
+        //$this->authorize('update', $vacante);
+    if (Gate::allows('update', $vehiculo)){
         return view('vehiculos.edit', [
             'vehiculo' => $vehiculo
         ]);
+    }else{
+        session()->flash('mensajeError', 'No tiene acceso a editar este vehiculo');
+        return redirect()->route('vehiculos.index');
+    }
     }
 
     /**

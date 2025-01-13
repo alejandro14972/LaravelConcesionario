@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empresa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EmpresaController extends Controller
 {
@@ -41,9 +43,16 @@ class EmpresaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Empresa $empresa)
     {
-        //
+        if (Gate::allows('update', $empresa)){
+            return view('empresas.edit', [
+                'empresa' => $empresa
+            ]);
+        }else{
+            session()->flash('error', 'No tiene acceso a editar esta empresa');
+            return redirect()->route('empresa.index');
+        }
     }
 
     /**

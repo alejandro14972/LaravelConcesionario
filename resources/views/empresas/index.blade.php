@@ -12,9 +12,16 @@
                 
             <div class="bg-green-500 p-2 text-white rounded mb-4">
                 {{ session('mensaje') }}
-            </div>
-          
+            </div>  
+            @endif
+
+
+            
+            @if (@session()->has('error'))
                 
+            <div class="bg-red-500 p-2 text-white rounded mb-4">
+                {{ session('error') }}
+            </div>  
             @endif
 
 

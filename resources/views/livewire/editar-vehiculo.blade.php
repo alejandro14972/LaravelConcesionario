@@ -37,7 +37,7 @@
             <option value="0">-Seleccione--</option>
             <option value="Gasolina">Gasolina</option>
             <option value="Diesel">Diesel</option>
-            <option value="Electrico">Eléctrico</option>
+            <option value="Eléctrico">Eléctrico</option>
             <option value="Híbrido">Híbrido</option>
         </select>
 

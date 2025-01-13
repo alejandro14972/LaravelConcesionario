@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
 class VehiculoController extends Controller
@@ -43,9 +44,13 @@ class VehiculoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Vehiculo $vehiculo)
     {
         //
+        //dd($vehiculo);
+        return view('vehiculos.edit', [
+            'vehiculo' => $vehiculo
+        ]);
     }
 
     /**

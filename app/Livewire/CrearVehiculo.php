@@ -13,75 +13,78 @@ use App\Models\carrocerias_vehiculos;
 use App\Models\ubicacion_provincia_vehiculos;
 use App\Models\Vehiculo;
 
-class CrearVehiculo extends Component{
+class CrearVehiculo extends Component
+{
 
 
-public $titulo;
-public $combustible;
-public $marca;
-public $modelo;
-public $carroceria;
-public $color;
-public $kilometros;
-public $ubicacion;
-public $fabricacion;
-public $precio;
-public $description;
-public $imagen;
+    public $titulo;
+    public $combustible;
+    public $marca;
+    public $modelo;
+    public $carroceria;
+    public $color;
+    public $kilometros;
+    public $ubicacion;
+    public $fabricacion;
+    public $precio;
+    public $description;
+    public $imagen;
 
 
-use WithFileUploads; //uso poara sunir imagenes del form
+    use WithFileUploads; //uso poara subir imagenes del form
 
-//nombre de las reglas de validacion wire:model
-protected $rules = [
-    'titulo' => 'required|string',
-    'combustible' => 'required|string',
-    'marca' => 'required|string',
-    'modelo' => 'required|string',
-    'carroceria' => 'required|string',
-    'color' => 'required|string',
-    'kilometros' => 'required|numeric',
-    'ubicacion' => 'required|string',
-    'fabricacion' => 'required|date',
-    'precio' => 'required|numeric',
-    'description' => 'required|string',
-    'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
-];
+    //nombre de las reglas de validacion wire:model
+    protected $rules = [
+        'titulo' => 'required|string',
+        'combustible' => 'required|string|starts_with:Gasolina,Diesel, Híbrido, Eléctrico',
+        'marca' => 'required|numeric',
+        'modelo' => 'required|numeric',
+        'carroceria' => 'required|numeric|between:1,8',
+        'color' => 'required|numeric',
+        'kilometros' => 'required|numeric|min:0',
+        'ubicacion' => 'required|numeric',
+        'fabricacion' => 'required|date|before:tomorrow',
+        'precio' => 'required|numeric|min:0',
+        'description' => 'required|string',
+        'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+    ];
 
 
-public function crearVehiculo(){
+    public function crearVehiculo()
+    {
 
-    $datos = $this->validate();
-    //dd($datos);
-    //alamcenar imagen
-    $imagen = $this->imagen->store('public/vehiculos');
-    $nombreImg = str_replace('public/vehiculos/', '', $imagen);
-    //dd($imagen);
-    //dd($nombreImg);
+        $datos = $this->validate();
+        //dd($datos);
+        //alamcenar imagen
+        $imagen = $this->imagen->store('vehiculos', 'public');
+        //dd($imagen);
+        $nombreImg = str_replace('vehiculos/', '', $imagen);
+        //dd($imagen);
+        //dd($nombreImg);
 
-    //crear vehiculo
-    Vehiculo::create([
-        'titulo' => $datos['titulo'],
-        'combustible' => $datos['combustible'],
-        'marca_id' => $datos['marca'],
-        'modelo_id' => $datos['modelo'],
-        'carroceria_id' => $datos['carroceria'],
-        'color_id' => $datos['color'],
-        'kilometros' => $datos['kilometros'],
-        'ubicacion_id' => $datos['ubicacion'],
-        'fabricacion' => $datos['fabricacion'],
-        'precio' => $datos['precio'],
-        'description' => $datos['description'],
-        'imagen' => $nombreImg,
-        'user_id' => auth()->user()->id,
-    ]);
+        //crear vehiculo
+        Vehiculo::create([
+            'titulo' => $datos['titulo'],
+            'combustible' => $datos['combustible'],
+            'marca_id' => $datos['marca'],
+            'modelo_id' => $datos['modelo'],
+            'carroceria_id' => $datos['carroceria'],
+            'color_id' => $datos['color'],
+            'kilometros' => $datos['kilometros'],
+            'ubicacion_id' => $datos['ubicacion'],
+            'fabricacion' => $datos['fabricacion'],
+            'precio' => $datos['precio'],
+            'description' => $datos['description'],
+            'imagen' => $nombreImg,
+            'user_id' => auth()->user()->id,
+        ]);
 
-    //crear mensaje de exito
-    session()->flash('mensaje', 'Vehiculo creado con exito');
+        //crear mensaje de exito
+        session()->flash('mensaje', 'Vehiculo creado con exito');
 
-    //redirect a la pagina de inicio
-    return redirect()->route('vehiculos.index');
-}
+        //redirect a la pagina de inicio
+        return redirect()->route('vehiculos.index');
+    }
 
 
     public function render()
@@ -101,7 +104,7 @@ public function crearVehiculo(){
             'provincias' => $provincias,
             'modelos' => $modelos,
             'colores' => $colores
-            
+
         ]);
     }
 }

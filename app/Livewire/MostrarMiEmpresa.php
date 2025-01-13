@@ -12,9 +12,6 @@ class MostrarMiEmpresa extends Component
 
         $empresa = Empresa::where('user_id', auth()->user()->id)->get();
 
-
-   
-
         return view('livewire.mostrar-mi-empresa', [
             'empresa' => $empresa
         ]);

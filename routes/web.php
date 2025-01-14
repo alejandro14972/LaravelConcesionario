@@ -15,8 +15,8 @@ Route::get('/vehiculos/create', [VehiculoController::class, 'create'])->middlewa
 Route::get('/vehiculos/{vehiculo}/edit', [VehiculoController::class, 'edit'])->middleware(['auth', 'verified'])->name('vehiculos.edit');
 
 //empresa
-Route::get('/empresa', [EmpresaController::class, 'index'])->middleware(['auth', 'verified'])->name('empresa.index');
-Route::get('/empresa/create', [EmpresaController::class, 'create'])->middleware(['auth', 'verified'])->name('empresa.create');
+Route::get('/empresa/create', [EmpresaController::class, 'create'])->middleware(['auth', 'verified'])->name('empresa.create'); //influye el orden de las rutas !!!!!!!
+Route::get('/empresa/{nombre}', [EmpresaController::class, 'index'])->middleware(['auth', 'verified'])->name('empresa.index');
 Route::get('/empresa/{empresa}/edit', [EmpresaController::class, 'edit'])->middleware(['auth', 'verified'])->name('empresa.edit');
 
 

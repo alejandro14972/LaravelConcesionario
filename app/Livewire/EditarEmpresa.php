@@ -43,7 +43,7 @@ class EditarEmpresa extends Component
 
         if (!$empresa) {
             session()->flash('error', 'Empresa no encontrada.');
-            return redirect()->route('empresa.index');
+            return redirect()->route('empresa.index', $empresa->nombre);
         }
         
         //asignar valores
@@ -56,7 +56,7 @@ class EditarEmpresa extends Component
 
         session()->flash('mensaje', 'Empresa actualizada correctamente.');
 
-        return redirect()->route('empresa.index');
+        return redirect()->route('empresa.index', $empresa->nombre);
 
     }
 

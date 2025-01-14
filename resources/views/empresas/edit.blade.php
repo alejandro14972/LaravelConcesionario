@@ -13,7 +13,7 @@
 
                     <h1
                     class="text-2xl font-semibold text-gray-900 text-center"
-                    >Editar empresa {{$empresa}}
+                    >Editar empresa
                     </h1>
 
                     <div class="md:flex md:justify-center p-5">

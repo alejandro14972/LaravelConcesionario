@@ -45,6 +45,7 @@ class CrearEmpresa extends Component
     {
 
         $provincias = ubicacion_provincia_vehiculos::all();
+        
 
         return view('livewire.crear-empresa', [
             'provincias' => $provincias

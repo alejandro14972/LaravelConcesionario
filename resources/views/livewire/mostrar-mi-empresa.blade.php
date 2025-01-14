@@ -1,10 +1,13 @@
 <div>
 
-   
+    @if (!$empresa)
+        {{-- solo se puede crear una empresa por ahora --}}
         <a href="{{ route('empresa.create') }}"
             class="inline-block bg-blue-500 hover:bg-blue-700 mb-5 text-white font-bold py-2 px-4 rounded">
             {{ __('Crear empresa') }}
         </a>
+    @endif
+
 
 
 

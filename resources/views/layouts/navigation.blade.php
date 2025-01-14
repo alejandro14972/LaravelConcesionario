@@ -96,7 +96,7 @@
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('vehiculos.create')" :active="request()->routeIs('vehiculos.create')">
-                {{ __('Crear vacante') }}
+                {{ __('Crear vehiculo') }}
             </x-responsive-nav-link>
         </div>
 
@@ -111,6 +111,18 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Editar usuario') }}
                 </x-responsive-nav-link>
+
+
+                @if ($empresaNavegacion && $empresaNavegacion->nombre)
+                <x-responsive-nav-link :href="route('empresa.index', $empresaNavegacion->nombre)">
+                    {{ __($empresaNavegacion->nombre) }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('empresa.create')">
+                    {{ __('Crear una empresa') }}
+                </x-responsive-nav-link>
+            @endif
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

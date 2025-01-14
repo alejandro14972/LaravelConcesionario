@@ -9,7 +9,6 @@ use Livewire\Component;
 class CrearEmpresa extends Component
 {
 
-
     public $titulo;
     public $direccion;
     public $provincia;
@@ -27,30 +26,20 @@ class CrearEmpresa extends Component
 
     public function crearEmpresa()
     {
-
         $datos = $this->validate();
 
-        //dd($datos);
-
-     Empresa::create([
+        $empresa = Empresa::create([
             'nombre' => $datos['titulo'],
             'direccion' => $datos['direccion'],
-          
+
             'telefono' => $datos['telefono'],
             'email' => $datos['email'],
             'user_id' => auth()->user()->id,
         ]);
 
-       
         session()->flash('mensajeEmpresa', 'Empresa creada correctamente');
-
-
-        return redirect()->route('empresa.index');
-
+        return redirect()->route('empresa.index', $empresa->nombre);
     }
-
-
-
 
     public function render()
     {

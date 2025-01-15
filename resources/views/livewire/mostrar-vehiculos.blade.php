@@ -11,8 +11,10 @@
                 <p class="text-gray-700"><strong>Fabricación:</strong> {{ $vehiculo->fabricacion }}</p>
                 <p class="text-gray-700"><strong>Ubicación:</strong> {{ $vehiculo->nombreUbicacion->provincia }}</p>
                 <p class="text-gray-700"><strong>Kilometros:</strong> {{ $vehiculo->kilometros }} km</p>
-                <p class="text-gray-700"><strong>Garantia:</strong> {{ $vehiculo->garantia == 1 ? 'Garantia de 12 meses':  'Sin garantia' }}</p>
-                
+                <p class="text-gray-700"><strong>Garantia:</strong>
+                    {{ $vehiculo->garantia == 1 ? 'Garantia de 12 meses' : 'Sin garantia' }}
+                </p>
+
             </div>
 
 
@@ -26,11 +28,11 @@
                     Editar
                 </a>
 
-                <button wire:click="$dispatch('mostrarAlerta', { id: {{ $vehiculo->id }} })" 
+                <button wire:click="$dispatch('mostrarAlerta', { id: {{ $vehiculo->id }} })"
                     class="bg-red-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
                     Eliminar
                 </button>
-                
+
             </div>
 
         </div>
@@ -67,5 +69,17 @@
             });
         });
     </script>
-@endpush
 
+    <script>
+        @if (session()->has('alerta'))
+            
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{session('alerta')}}",
+                showConfirmButton: false,
+                timer: 3500
+            });
+        @endif
+    </script>
+@endpush

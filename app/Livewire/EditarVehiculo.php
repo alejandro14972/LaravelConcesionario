@@ -104,8 +104,11 @@ class EditarVehiculo extends Component
 
         //guardar
         $vehiculo->save();
+        //mensajes
+        //session()->flash('mensaje', 'Vehiculo actualizado');
+        session()->flash('alerta', '¡Vehículo actualizado con éxito!');
+
         //redireccionar
-        session()->flash('mensaje', 'Vehiculo actualizado');
         return redirect()->route('vehiculos.index');
     }
 

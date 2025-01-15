@@ -84,7 +84,8 @@ class CrearVehiculo extends Component
         ]);
 
         //crear mensaje de exito
-        session()->flash('mensaje', 'Vehiculo creado con exito');
+        //session()->flash('mensaje', 'Vehiculo creado con exito');
+        session()->flash('alerta', '¡Vehículo creado con éxito!');
 
         //redirect a la pagina de inicio
         return redirect()->route('vehiculos.index');

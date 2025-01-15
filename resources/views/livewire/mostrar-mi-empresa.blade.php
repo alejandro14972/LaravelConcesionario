@@ -36,8 +36,7 @@
                         Editar
                     </a>
 
-                    <button 
-                        wire:click="$dispatch('mostrarAlerta', { id: {{ $empr->id }} })" 
+                    <button wire:click="$dispatch('mostrarAlerta', { id: {{ $empr->id }} })"
                         class="bg-red-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
                         Eliminar
                     </button>
@@ -77,5 +76,19 @@
                 });
             });
         });
+    </script>
+
+
+    <script>
+        @if (session()->has('alerta'))
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('alerta') }}",
+                showConfirmButton: false,
+                timer: 3500
+            });
+        @endif
     </script>
 @endpush

@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [VehiculoController::class, 'index'])->middleware(['auth', 'verified'])->name('vehiculos.index');
 Route::get('/vehiculos/create', [VehiculoController::class, 'create'])->middleware(['auth', 'verified'])->name('vehiculos.create');
 Route::get('/vehiculos/{vehiculo}/edit', [VehiculoController::class, 'edit'])->middleware(['auth', 'verified'])->name('vehiculos.edit');
+Route::get('/vehiculos/{vehiculo}', [VehiculoController::class, 'show'])->middleware(['auth', 'verified'])->name('vehiculos.show');
 
 //empresa
 Route::get('/empresa/create', [EmpresaController::class, 'create'])->middleware(['auth', 'verified'])->name('empresa.create'); //influye el orden de las rutas !!!!!!!

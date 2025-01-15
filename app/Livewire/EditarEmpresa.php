@@ -54,7 +54,8 @@ class EditarEmpresa extends Component
         
         $empresa->save();
 
-        session()->flash('mensaje', 'Empresa actualizada correctamente.');
+        //session()->flash('mensaje', 'Empresa actualizada correctamente.');
+        session()->flash('alerta', '¡Empresa actualizada con éxito!');
 
         return redirect()->route('empresa.index', $empresa->nombre);
 

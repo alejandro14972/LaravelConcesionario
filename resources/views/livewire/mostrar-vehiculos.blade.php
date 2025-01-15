@@ -1,5 +1,10 @@
 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 space-y-6">
 
+    <!-- Count of vehicles -->
+    <div class="bg-indigo-100 text-indigo-800 text-center text-lg font-semibold rounded-lg p-4 shadow-md">
+        Total Vehículos: <span class="text-indigo-600">{{ $vehiculos->count() }}</span>
+    </div>
+
     @foreach ($vehiculos as $vehiculo)
         <div class="p-6 bg-gray-100 rounded-lg shadow-md md:flex md:justify-between md:items-center">
 
@@ -19,7 +24,7 @@
 
 
             <div class="flex gap-3 mt-5 justify-center md:flex md:justify-center md:items-center">
-                <a href="#" class="bg-green-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
+                <a href="{{ route('vehiculos.show', $vehiculo->id) }}" class="bg-green-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
                     Ver
                 </a>
 

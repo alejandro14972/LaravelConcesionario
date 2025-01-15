@@ -56,4 +56,9 @@ class Vehiculo extends Model
         return $this->belongsTo(ubicacion_provincia_vehiculos::class, 'ubicacion_id');
     }
 
+    public function nombreUser()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

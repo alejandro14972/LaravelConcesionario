@@ -40,9 +40,12 @@ class VehiculoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vehiculo $vehiculo)
     {
-        //
+       // dd($vehiculo);
+       return view('vehiculos.show', [
+        'vehiculo' => $vehiculo
+       ]);
     }
 
     /**

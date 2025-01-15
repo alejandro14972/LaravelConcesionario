@@ -27,7 +27,7 @@ class EditarVehiculo extends Component
     public $description;
     public $imagen;
     public $imagen_nueva;
-
+    public $cv;
 
     //nombre de las reglas de validacion wire:model
     protected $rules = [
@@ -43,12 +43,10 @@ class EditarVehiculo extends Component
         'precio' => 'required|numeric|min:0',
         'description' => 'required|string',
         'imagen_nueva' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+        'cv' => 'required|numeric'
     ];
 
-
-
     use WithFileUploads; //uso poara subir imagenes del form
-
 
     public function mount(Vehiculo $vehiculo)
     {
@@ -65,6 +63,7 @@ class EditarVehiculo extends Component
         $this->fabricacion = $vehiculo->fabricacion;
         $this->description = $vehiculo->description;
         $this->imagen = $vehiculo->imagen; //se carga la imagen del vehiculo
+        $this->cv = $vehiculo->cv; //se carga la imagen del
     }
 
 
@@ -72,17 +71,12 @@ class EditarVehiculo extends Component
     //editar vehiculo 
     public function updateVehiculo()
     {
-
         $datos =  $this->validate();
-
-
         //si hay nueva img 
-
         if($this->imagen_nueva){
             $imagen = $this->imagen_nueva->store('vehiculos', 'public');
             $datos['imagen'] = str_replace('vehiculos/', '', $imagen);
         }
-
 
         //encontar el vehiculo a editar
 
@@ -102,6 +96,7 @@ class EditarVehiculo extends Component
         $vehiculo->fabricacion = $datos['fabricacion'];
         $vehiculo->description = $datos['description'];
         $vehiculo->imagen = $datos['imagen'] ?? $vehiculo->imagen; //se carga la imagen del vehiculo
+        $vehiculo->cv = $datos['cv'];
 
         //guardar
         $vehiculo->save();

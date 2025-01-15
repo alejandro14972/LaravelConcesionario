@@ -28,6 +28,7 @@ class CrearVehiculo extends Component
     public $description;
     public $imagen;
     public $cv;
+    public $garantia = false;
 
 
     use WithFileUploads; //uso poara subir imagenes del form
@@ -46,7 +47,8 @@ class CrearVehiculo extends Component
         'precio' => 'required|numeric|min:0',
         'description' => 'required|string',
         'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
-        'cv' => 'required|numeric'
+        'cv' => 'required|numeric',
+        'garantia' => 'boolean' // Validación de checkbox
     ];
 
 
@@ -54,7 +56,7 @@ class CrearVehiculo extends Component
     {
 
         $datos = $this->validate();
-        //dd($datos);
+        /* dd($datos); */
         //alamcenar imagen
         $imagen = $this->imagen->store('vehiculos', 'public');
         //dd($imagen);
@@ -77,7 +79,8 @@ class CrearVehiculo extends Component
             'description' => $datos['description'],
             'imagen' => $nombreImg,
             'user_id' => auth()->user()->id,
-            'cv' => $datos['cv']
+            'cv' => $datos['cv'],
+            'garantia' => $datos['garantia'],// Guardar el valor del checkbox
         ]);
 
         //crear mensaje de exito

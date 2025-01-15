@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Vehiculo;
+use Livewire\Attributes\On;
 
 class MostrarVehiculos extends Component
 {

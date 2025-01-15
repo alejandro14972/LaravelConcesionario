@@ -15,7 +15,6 @@
             </div>
             @endif
 
-
             {{-- mensaje policy --}}
             @if (@session()->has('mensajeError'))
                 
@@ -23,7 +22,6 @@
                 {{ session('mensajeError') }}
             </div>
             @endif
-
 
             <livewire:mostrar-vehiculos />
             

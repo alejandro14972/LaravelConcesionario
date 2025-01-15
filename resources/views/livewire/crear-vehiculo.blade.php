@@ -3,7 +3,7 @@
         <x-input-label for="titulo" :value="__('Título vehiculo')" />
         <x-text-input 
             id="titulo" 
-            class="block mt-1 w-full" 
+            class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full" 
             type="text" 
             wire:model="titulo" 
             :value="old('titulo')" 
@@ -48,8 +48,8 @@
             <option value="0">-Seleccione--</option>
             <option value="Gasolina">Gasolina</option>
             <option value="Diesel">Diesel</option>
-            <option value="Eléctrico">Eléctrico</option>
-            <option value="Híbrido">Hibrido</option>
+            <option value="Electrico">Eléctrico</option>
+            <option value="Hibrido">Hibrido</option>
         </select>
 
 
@@ -138,6 +138,16 @@
         <x-text-input id="precio" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" wire:model="precio" :value="old('kilometros')"
             required placeholder="2000, 4000, 5500..." type="number"/>
         @error('precio')
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
+    </div>
+
+
+    <div>
+        <x-input-label for="cv" :value="__('CV')" />
+        <x-text-input id="cv" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" wire:model="cv" :value="old('cv')"
+            required placeholder="100, 120, 200 ..." type="number"/>
+        @error('cv')
             <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>

@@ -29,6 +29,7 @@ class CrearVehiculo extends Component
     public $precio;
     public $description;
     public $imagen;
+    public $cv;
 
 
     use WithFileUploads; //uso poara subir imagenes del form
@@ -36,7 +37,7 @@ class CrearVehiculo extends Component
     //nombre de las reglas de validacion wire:model
     protected $rules = [
         'titulo' => 'required|string',
-        'combustible' => 'required|string|starts_with:Gasolina,Diesel, Híbrido, Eléctrico',
+        'combustible' => 'required|string|starts_with:Gasolina,Diesel,Hibrido,Electrico',
         'marca' => 'required|numeric',
         'modelo' => 'required|numeric',
         'carroceria' => 'required|numeric|between:1,8',
@@ -47,6 +48,7 @@ class CrearVehiculo extends Component
         'precio' => 'required|numeric|min:0',
         'description' => 'required|string',
         'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+        'cv' => 'required|numeric'
     ];
 
 
@@ -77,6 +79,7 @@ class CrearVehiculo extends Component
             'description' => $datos['description'],
             'imagen' => $nombreImg,
             'user_id' => auth()->user()->id,
+            'cv' => $datos['cv']
         ]);
 
         //crear mensaje de exito

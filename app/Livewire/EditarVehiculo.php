@@ -32,7 +32,7 @@ class EditarVehiculo extends Component
     //nombre de las reglas de validacion wire:model
     protected $rules = [
         'titulo' => 'required|string',
-        'combustible' => 'required|string|starts_with:Gasolina,Diesel, Híbrido, Eléctrico',
+        'combustible' => 'required|string|starts_with:Gasolina,Diesel,Híbrido,Eléctrico',
         'marca' => 'required|numeric',
         'modelo' => 'required|numeric',
         'carroceria' => 'required|numeric|between:1,8',

@@ -16,4 +16,14 @@ class Empresa extends Model
         'email',
         'user_id',
     ];
+
+
+
+
+    //relaciones
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id'); // Asegúrate de que 'user_id' sea la clave foránea en tu tabla de empresas
+    }
+
 }

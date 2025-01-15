@@ -47,5 +47,17 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
-    
+
+
+    //relaciones
+    public function empresa()
+    {
+        return $this->hasOne(Empresa::class, 'user_id'); 
+    }
+
+    public function vehiculos()
+    {
+        return $this->hasMany(Vehiculo::class, 'user_id'); // Clave foránea en Vehiculo
+    }
+
 }

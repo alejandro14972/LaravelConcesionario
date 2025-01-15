@@ -15,8 +15,6 @@ use App\Models\Vehiculo;
 
 class CrearVehiculo extends Component
 {
-
-
     public $titulo;
     public $combustible;
     public $marca;

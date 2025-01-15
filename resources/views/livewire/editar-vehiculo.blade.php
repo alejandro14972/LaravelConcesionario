@@ -136,6 +136,14 @@
         @enderror
     </div>
 
+    <div>
+        <x-input-label for="cv" :value="__('CV')" />
+        <x-text-input id="cv" class="border-gray-300 dark:border-gray-700  rounded-md shadow-sm block mt-1 w-full" wire:model="cv" :value="old('cv')"
+            required placeholder="100, 120, 200 ..." type="number"/>
+        @error('cv')
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
+    </div>
 
     <div>
         <x-input-label for="año" :value="__('Año de fabricación')" />

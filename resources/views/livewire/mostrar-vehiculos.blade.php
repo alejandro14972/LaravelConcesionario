@@ -11,6 +11,8 @@
                 <p class="text-gray-700"><strong>Fabricación:</strong> {{ $vehiculo->fabricacion }}</p>
                 <p class="text-gray-700"><strong>Ubicación:</strong> {{ $vehiculo->nombreUbicacion->provincia }}</p>
                 <p class="text-gray-700"><strong>Kilometros:</strong> {{ $vehiculo->kilometros }} km</p>
+                <p class="text-gray-700"><strong>Garantia:</strong> {{ $vehiculo->garantia == 1 ? 'Garantia de 12 meses':  'Sin garantia' }}</p>
+                
             </div>
 
 

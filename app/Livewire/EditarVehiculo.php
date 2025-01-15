@@ -28,6 +28,7 @@ class EditarVehiculo extends Component
     public $imagen;
     public $imagen_nueva;
     public $cv;
+    public $garantia = false;
 
     //nombre de las reglas de validacion wire:model
     protected $rules = [
@@ -43,7 +44,8 @@ class EditarVehiculo extends Component
         'precio' => 'required|numeric|min:0',
         'description' => 'required|string',
         'imagen_nueva' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
-        'cv' => 'required|numeric'
+        'cv' => 'required|numeric',
+        'garantia' => 'boolean' // Validación de checkbox
     ];
 
     use WithFileUploads; //uso poara subir imagenes del form
@@ -64,9 +66,8 @@ class EditarVehiculo extends Component
         $this->description = $vehiculo->description;
         $this->imagen = $vehiculo->imagen; //se carga la imagen del vehiculo
         $this->cv = $vehiculo->cv; //se carga la imagen del
+        $this->garantia = $vehiculo->garantia == 0 ? false: true; //solucion para tener marcada la opcion de checkbox      
     }
-
-
 
     //editar vehiculo 
     public function updateVehiculo()
@@ -84,6 +85,8 @@ class EditarVehiculo extends Component
 
         //asiganr valores
 
+
+
         $vehiculo->titulo = $datos['titulo'];
         $vehiculo->combustible = $datos['combustible'];
         $vehiculo->marca_id = $datos['marca'];
@@ -97,6 +100,7 @@ class EditarVehiculo extends Component
         $vehiculo->description = $datos['description'];
         $vehiculo->imagen = $datos['imagen'] ?? $vehiculo->imagen; //se carga la imagen del vehiculo
         $vehiculo->cv = $datos['cv'];
+        $vehiculo->garantia = $datos['garantia'];
 
         //guardar
         $vehiculo->save();

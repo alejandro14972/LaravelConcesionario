@@ -175,6 +175,22 @@
 
 
     <div>
+        <x-input-label for="garantia" :value="__('Garantía 12 meses')" />
+        <div class="flex items-center">
+            <input 
+                id="garantia" 
+                type="checkbox" 
+                wire:model="garantia" 
+                class="mr-2 border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+            <label for="garantia" class="text-gray-700 dark:text-gray-300">Activar garantía</label>
+        </div>
+        @error('garantia')
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
+    </div>
+
+
+    <div>
         <x-input-label for="imagen" :value="__('Imagen')" />
         <x-text-input id="imagen" 
             class="block mt-1 w-full" 

@@ -25,7 +25,8 @@ class Vehiculo extends Model
         'imagen',
         'disponible',
         'user_id',
-        'cv'
+        'cv',
+        'garantia'
     ];
 
 

@@ -13,6 +13,7 @@
             <div class="bg-green-500 p-2 text-white rounded mb-4">
                 {{ session('mensaje') }}
             </div>
+
             @endif
 
             {{-- mensaje policy --}}

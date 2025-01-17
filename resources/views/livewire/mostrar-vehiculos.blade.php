@@ -8,23 +8,47 @@
     @foreach ($vehiculos as $vehiculo)
         <div class="p-6 bg-gray-100 rounded-lg shadow-md md:flex md:justify-between md:items-center">
 
+
+            @php
+                $EnunciadoIva = '';
+                $claseIVA = '';
+                if ($vehiculo->iva == 1) {
+                    $EnunciadoIva = 'Con IVA';
+                    $claseIVA = 'text-green-700 text-green-800';
+                } else {
+                    $EnunciadoIva = 'Sin IVA';
+                    $claseIVA = 'text-red-700 text-red-800';
+                }
+
+                $claseGarantiaActiva = '';
+                if ($vehiculo->garantia == 1) {
+                    $claseGarantiaActiva = 'text-green-700 text-green-800';
+                } else {
+                    $claseGarantiaActiva = 'text-red-700 text-red-800';
+                }
+            @endphp
+
+
             <div>
                 <p class="text-gray-700"><strong>Marca:</strong> {{ $vehiculo->nombreMarca->marca }}
                     {{ $vehiculo->nombreModelo->nombre_modelo }}</p>
                 <p class="text-gray-700"><strong>Combustible:</strong> {{ $vehiculo->combustible }}</p>
-                <p class="text-gray-700"><strong>Precio:</strong> {{ $vehiculo->precio }} €</p>
+                <p class="text-gray-700"><strong>Precio:</strong> {{ $vehiculo->precio }} € <i class={{ $claseIVA }}>
+                        {{ $EnunciadoIva }}</i> </p>
                 <p class="text-gray-700"><strong>Fabricación:</strong> {{ $vehiculo->fabricacion }}</p>
                 <p class="text-gray-700"><strong>Ubicación:</strong> {{ $vehiculo->nombreUbicacion->provincia }}</p>
                 <p class="text-gray-700"><strong>Kilometros:</strong> {{ $vehiculo->kilometros }} km</p>
-                <p class="text-gray-700"><strong>Garantia:</strong>
-                    {{ $vehiculo->garantia == 1 ? 'Garantia de 12 meses' : 'Sin garantia' }}
+                <p class="text-gray-700"><strong>Garantia:</strong><i
+                        class="{{ $claseGarantiaActiva }}">{{ $vehiculo->garantia == 1 ? 'Garantia de 12 meses' : 'Sin garantia' }}</i>
+
                 </p>
 
             </div>
 
 
             <div class="flex gap-3 mt-5 justify-center md:flex md:justify-center md:items-center">
-                <a href="{{ route('vehiculos.show', $vehiculo->id) }}" class="bg-green-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
+                <a href="{{ route('vehiculos.show', $vehiculo->id) }}"
+                    class="bg-green-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
                     Ver
                 </a>
 
@@ -77,11 +101,11 @@
 
     <script>
         @if (session()->has('alerta'))
-            
+
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "{{session('alerta')}}",
+                title: "{{ session('alerta') }}",
                 showConfirmButton: false,
                 timer: 3500
             });

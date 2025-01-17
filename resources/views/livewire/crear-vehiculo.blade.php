@@ -9,10 +9,6 @@
         @enderror
     </div>
 
-
-
-
-
     <div>
         <x-input-label for="carroceria" :value="__('Tipo de carroceria')" />
         <select wire:model="carroceria" id="carroceria"

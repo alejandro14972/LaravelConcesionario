@@ -8,6 +8,7 @@ use Livewire\WithFileUploads;
 use App\Models\ModeloVehiculo;
 use App\Models\MarcasVehiculos;
 use App\Models\carrocerias_vehiculos;
+use App\Models\Etiqueta;
 use App\Models\ubicacion_provincia_vehiculos;
 use App\Models\Vehiculo;
 
@@ -29,11 +30,16 @@ class EditarVehiculo extends Component
     public $imagen_nueva;
     public $cv;
     public $garantia = false;
+    public $cc = 0;
+    public $iva = false;
+    public $etiqueta;
+    public $puertas;
+    public $cambio = 0;
 
     //nombre de las reglas de validacion wire:model
     protected $rules = [
         'titulo' => 'required|string',
-        'combustible' => 'required|string|starts_with:Gasolina,Diesel,Híbrido,Eléctrico',
+        'combustible' => 'required|string|starts_with:Gasolina,Diesel,Hibrido,Electrico',
         'marca' => 'required|numeric',
         'modelo' => 'required|numeric',
         'carroceria' => 'required|numeric|between:1,8',
@@ -45,7 +51,12 @@ class EditarVehiculo extends Component
         'description' => 'required|string',
         'imagen_nueva' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
         'cv' => 'required|numeric',
-        'garantia' => 'boolean' // Validación de checkbox
+        'garantia' => 'boolean', // Validación de checkbox
+        'cc' => 'numeric|min:0',
+        'iva' => 'boolean',
+        'etiqueta' => 'required|numeric|between:0,5',
+        'puertas' => 'required|numeric|between:1,6',
+        'cambio' => 'required|numeric|between:0,1'
     ];
 
     use WithFileUploads; //uso poara subir imagenes del form
@@ -67,6 +78,11 @@ class EditarVehiculo extends Component
         $this->imagen = $vehiculo->imagen; //se carga la imagen del vehiculo
         $this->cv = $vehiculo->cv; //se carga la imagen del
         $this->garantia = $vehiculo->garantia == 0 ? false: true; //solucion para tener marcada la opcion de checkbox      
+        $this->cc = $vehiculo->cc;
+        $this->iva = $vehiculo->iva == 0 ? false:true;
+        $this->etiqueta = $vehiculo->etiqueta_id;
+        $this->puertas = $vehiculo->num_puertas;
+        $this->cambio = $vehiculo->cambio;
     }
 
     //editar vehiculo 
@@ -84,9 +100,6 @@ class EditarVehiculo extends Component
         $vehiculo = Vehiculo::find($this->vehiculo_id);
 
         //asiganr valores
-
-
-
         $vehiculo->titulo = $datos['titulo'];
         $vehiculo->combustible = $datos['combustible'];
         $vehiculo->marca_id = $datos['marca'];
@@ -101,6 +114,11 @@ class EditarVehiculo extends Component
         $vehiculo->imagen = $datos['imagen'] ?? $vehiculo->imagen; //se carga la imagen del vehiculo
         $vehiculo->cv = $datos['cv'];
         $vehiculo->garantia = $datos['garantia'];
+        $vehiculo->cc = $datos['cc'];
+        $vehiculo->iva = $datos['iva'];
+        $vehiculo->etiqueta_id = $datos['etiqueta'];
+        $vehiculo->num_puertas = $datos['puertas'];
+        $vehiculo->cambio = $datos['cambio'];
 
         //guardar
         $vehiculo->save();
@@ -123,14 +141,16 @@ class EditarVehiculo extends Component
         $provincias = ubicacion_provincia_vehiculos::all();
         $modelos = ModeloVehiculo::all();
         $colores = ColorVehiculo::all();
+        $etiquetas = Etiqueta::all();
+
 
         return view('livewire.editar-vehiculo', [
             'marcas' => $marcas,
             'carrocerias' => $carrocerias,
             'provincias' => $provincias,
             'modelos' => $modelos,
-            'colores' => $colores
-
+            'colores' => $colores,
+            'etiquetas' => $etiquetas
         ]);
     }
 }

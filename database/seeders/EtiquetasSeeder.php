@@ -46,6 +46,14 @@ class EtiquetasSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'imagen' => 'sin.svg', // Asegúrate de que este archivo exista en public/
+                'nombre' => 'Sin Etiqueta',
+                'valor' => 5,
+                'descripcion' => 'Etiqueta con restricciones',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('etiquetas')->insert($etiquetas);

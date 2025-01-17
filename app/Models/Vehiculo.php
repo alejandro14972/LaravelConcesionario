@@ -66,4 +66,9 @@ class Vehiculo extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+
+    public function nombreEtiqueta()
+    {
+        return $this->belongsTo(Etiqueta::class, 'etiqueta_id');
+    }
 }

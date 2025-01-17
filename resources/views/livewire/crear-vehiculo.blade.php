@@ -35,12 +35,9 @@
         <select wire:model="etiqueta" id="etiqueta"
             class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
             <option value="">-Seleccione--</option>
-            <option value="0">Sin etiqueta medioambiental</option>
             @foreach ($etiquetas as $etiqueta)
                 
                 <option value="{{ $etiqueta->id }}">{{ $etiqueta->nombre }}
-
-                    {{-- <img src="{{ asset('storage/etiquetas/' . $etiqueta->imagen) }}" alt="hola"> --}}
 
                 </option>
             @endforeach

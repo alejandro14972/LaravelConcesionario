@@ -26,7 +26,12 @@ class Vehiculo extends Model
         'disponible',
         'user_id',
         'cv',
-        'garantia'
+        'garantia',
+        'cambio',
+        'num_puertas',
+        'etiqueta_id',
+        'iva',
+        'cc'
     ];
 
 

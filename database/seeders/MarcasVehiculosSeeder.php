@@ -15,64 +15,49 @@ class MarcasVehiculosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Toyota',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
+        $marcas = [
+            ['marca' => 'Toyota'],
+            ['marca' => 'Honda'],
+            ['marca' => 'Ford'],
+            ['marca' => 'Chevrolet'],
+            ['marca' => 'Nissan'],
+            ['marca' => 'BMW'],
+            ['marca' => 'Mercedes-Benz'],
+            ['marca' => 'Audi'],
+            ['marca' => 'Volkswagen'],
+            ['marca' => 'Hyundai'],
+            ['marca' => 'Kia'],
+            ['marca' => 'Mazda'],
+            ['marca' => 'Subaru'],
+            ['marca' => 'Peugeot'],
+            ['marca' => 'Renault'],
+            ['marca' => 'Fiat'],
+            ['marca' => 'Jeep'],
+            ['marca' => 'Tesla'],
+            ['marca' => 'Volvo'],
+            ['marca' => 'Mitsubishi'],
+            ['marca' => 'Lexus'],
+            ['marca' => 'Jaguar'],
+            ['marca' => 'Land Rover'],
+            ['marca' => 'Acura'],
+            ['marca' => 'Porsche'],
+            ['marca' => 'Alfa Romeo'],
+            ['marca' => 'Chrysler'],
+            ['marca' => 'Dodge'],
+            ['marca' => 'Ferrari'],
+            ['marca' => 'Lamborghini'],
+            ['marca' => 'Maserati'],
+            ['marca' => 'Rolls-Royce'],
+            ['marca' => 'Bugatti'],
+            ['marca' => 'Bentley'],
+        ];
 
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Honda',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Ford',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Chevrolet',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Nissan',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'BMW',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Mercedes-Benz',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Audi',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Volkswagen',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('marcas_vehiculos')->insert([
-            'marca' => 'Hyundai',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
+        foreach ($marcas as $marca) {
+            DB::table('marcas_vehiculos')->insert([
+                'marca' => $marca['marca'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }

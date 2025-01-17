@@ -10,6 +10,7 @@ use Livewire\WithFileUploads;
 use App\Models\ModeloVehiculo;
 use App\Models\marcasvehiculos;
 use App\Models\carrocerias_vehiculos;
+use App\Models\Etiqueta;
 use App\Models\ubicacion_provincia_vehiculos;
 use App\Models\Vehiculo;
 
@@ -29,6 +30,11 @@ class CrearVehiculo extends Component
     public $imagen;
     public $cv;
     public $garantia = false;
+    public $cc = 0;
+    public $iva = false;
+    public $etiqueta;
+    public $puertas;
+    public $cambio = 0;
 
 
     use WithFileUploads; //uso poara subir imagenes del form
@@ -48,7 +54,12 @@ class CrearVehiculo extends Component
         'description' => 'required|string',
         'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
         'cv' => 'required|numeric',
-        'garantia' => 'boolean' // Validación de checkbox
+        'garantia' => 'boolean', // Validación de checkbox
+        'cc' => 'numeric|min:0',
+        'iva' => 'boolean',
+        'etiqueta' => 'required|numeric|between:0,5',
+        'puertas' => 'required|numeric|between:1,6',
+        'cambio' => 'required|numeric|between:0,1'
     ];
 
 
@@ -56,7 +67,7 @@ class CrearVehiculo extends Component
     {
 
         $datos = $this->validate();
-        /* dd($datos); */
+        // dd($datos); 
         //alamcenar imagen
         $imagen = $this->imagen->store('vehiculos', 'public');
         //dd($imagen);
@@ -81,6 +92,11 @@ class CrearVehiculo extends Component
             'user_id' => auth()->user()->id,
             'cv' => $datos['cv'],
             'garantia' => $datos['garantia'],// Guardar el valor del checkbox
+            'cc' =>$datos['cc'],
+            'iva' => $datos['iva'],
+            'etiqueta_id' => $datos['etiqueta'],
+            'num_puertas' => $datos['puertas'],
+            'cambio' => $datos['cambio']
         ]);
 
         //crear mensaje de exito
@@ -101,6 +117,7 @@ class CrearVehiculo extends Component
         $provincias = ubicacion_provincia_vehiculos::all();
         $modelos = ModeloVehiculo::all();
         $colores = ColorVehiculo::all();
+        $etiquetas = Etiqueta::all();
 
 
         return view('livewire.crear-vehiculo', [
@@ -108,7 +125,8 @@ class CrearVehiculo extends Component
             'carrocerias' => $carrocerias,
             'provincias' => $provincias,
             'modelos' => $modelos,
-            'colores' => $colores
+            'colores' => $colores,
+            'etiquetas' => $etiquetas,
 
         ]);
     }

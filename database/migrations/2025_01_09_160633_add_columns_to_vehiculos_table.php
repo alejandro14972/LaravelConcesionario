@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('vehiculos', function (Blueprint $table) {
-//relacion de la tabla vehiculos con las demas tablas y creacion de las columnas
+            // Relación de la tabla vehículos con las demás tablas y creación de las columnas
             $table->string('titulo');
             $table->string('combustible');
             $table->foreignId('marca_id')->constrained('marcas_vehiculos', 'id')->onDelete('cascade');
@@ -36,8 +36,31 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('vehiculos', function (Blueprint $table) {
-            $table->dropColumn(['titulo', 'combustible', 'marca_id', 'modelo_id', 'carroceria_id', 'color_id', 
-            'ubicacion_id', 'fabricacion', 'precio', 'description', 'imagen', 'disponible', 'user_id']);
+            // Eliminar claves foráneas antes de las columnas
+            $table->dropForeign(['marca_id']);
+            $table->dropForeign(['modelo_id']);
+            $table->dropForeign(['carroceria_id']);
+            $table->dropForeign(['color_id']);
+            $table->dropForeign(['ubicacion_id']);
+            $table->dropForeign(['user_id']);
+
+            // Eliminar columnas
+            $table->dropColumn([
+                'titulo',
+                'combustible',
+                'marca_id',
+                'modelo_id',
+                'carroceria_id',
+                'color_id',
+                'ubicacion_id',
+                'fabricacion',
+                'kilometros',
+                'precio',
+                'description',
+                'imagen',
+                'disponible',
+                'user_id',
+            ]);
         });
     }
 };

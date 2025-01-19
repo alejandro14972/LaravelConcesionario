@@ -19,7 +19,6 @@
                     $EnunciadoIva = 'Sin IVA';
                     $claseIVA = 'text-red-700 text-red-800';
                 }
-
                 $claseGarantiaActiva = '';
                 if ($vehiculo->garantia == 1) {
                     $claseGarantiaActiva = 'text-green-700 text-green-800';
@@ -35,7 +34,8 @@
                 <p class="text-gray-700"><strong>Combustible:</strong> {{ $vehiculo->combustible }}</p>
                 <p class="text-gray-700"><strong>Precio:</strong> {{ $vehiculo->precio }} € <i class={{ $claseIVA }}>
                         {{ $EnunciadoIva }}</i> </p>
-                <p class="text-gray-700"><strong>Fabricación:</strong> {{ $vehiculo->fabricacion }}</p>
+                <p class="text-gray-700"><strong>Fabricación:</strong>
+                    {{ \Carbon\Carbon::parse($vehiculo->fabricacion)->format('Y') }}</p>
                 <p class="text-gray-700"><strong>Ubicación:</strong> {{ $vehiculo->nombreUbicacion->provincia }}</p>
                 <p class="text-gray-700"><strong>Kilometros:</strong> {{ $vehiculo->kilometros }} km</p>
                 <p class="text-gray-700"><strong>Garantia:</strong><i

@@ -1,5 +1,10 @@
 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 space-y-6">
 
+
+
+    <livewire:filtrar-vehiculos/>
+
+
     <!-- Count of vehicles -->
     <div class="bg-indigo-100 text-indigo-800 text-center text-lg font-semibold rounded-lg p-4 shadow-md">
         Total Vehículos: <span class="text-indigo-600">{{ $vehiculos->count() }}</span>

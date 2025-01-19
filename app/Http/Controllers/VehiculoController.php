@@ -43,9 +43,18 @@ class VehiculoController extends Controller
     public function show(Vehiculo $vehiculo)
     {
        // dd($vehiculo);
-       return view('vehiculos.show', [
+       /* return view('vehiculos.show', [
         'vehiculo' => $vehiculo
-       ]);
+       ]); */
+
+       if (Gate::allows('view', $vehiculo)){
+        return view('vehiculos.show', [
+            'vehiculo' => $vehiculo
+        ]);
+    }else{
+        session()->flash('mensajeError', 'No tiene acceso a ver este vehiculo');
+        return redirect()->route('vehiculos.index');
+    }
     }
 
     /**

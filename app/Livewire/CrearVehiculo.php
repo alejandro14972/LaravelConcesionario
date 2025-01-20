@@ -10,8 +10,11 @@ use Livewire\WithFileUploads;
 use App\Models\ModeloVehiculo;
 use App\Models\marcasvehiculos;
 use App\Models\carrocerias_vehiculos;
+use App\Models\CarroceriasVehiculos;
 use App\Models\Etiqueta;
+use App\Models\MarcasVehiculos as ModelsMarcasVehiculos;
 use App\Models\ubicacion_provincia_vehiculos;
+use App\Models\UbicacionProvinciaVehiculos;
 use App\Models\Vehiculo;
 
 class CrearVehiculo extends Component
@@ -112,9 +115,9 @@ class CrearVehiculo extends Component
     {
 
         //consultar bd para obtener las marcas de vehiculos
-        $carrocerias = carrocerias_vehiculos::all();
-        $marcas = marcasvehiculos::all();
-        $provincias = ubicacion_provincia_vehiculos::all();
+        $carrocerias = CarroceriasVehiculos::all();
+        $marcas = MarcasVehiculos::all();
+        $provincias = UbicacionProvinciaVehiculos::all();
         $modelos = ModeloVehiculo::all();
         $colores = ColorVehiculo::all();
         $etiquetas = Etiqueta::all();

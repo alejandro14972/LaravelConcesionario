@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\ColorVehiculo;
 use App\Models\MarcasVehiculos;
 use App\Models\ubicacion_provincia_vehiculos;
+use App\Models\UbicacionProvinciaVehiculos;
 use Livewire\Component;
 
 class FiltrarVehiculos extends Component
@@ -32,7 +33,7 @@ class FiltrarVehiculos extends Component
     public function render()
     {
         $marca =  MarcasVehiculos::all();
-        $ubicaciones = ubicacion_provincia_vehiculos::all();
+        $ubicaciones = UbicacionProvinciaVehiculos::all();
         $color = ColorVehiculo::all();
 
         return view('livewire.filtrar-vehiculos', [

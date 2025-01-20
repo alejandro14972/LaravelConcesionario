@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Empresa;
 use Livewire\Component;
 use App\Models\ubicacion_provincia_vehiculos;
+use App\Models\UbicacionProvinciaVehiculos;
 
 class EditarEmpresa extends Component
 {
@@ -64,7 +65,7 @@ class EditarEmpresa extends Component
     public function render()
     {
 
-        $provincias = ubicacion_provincia_vehiculos::all();
+        $provincias = UbicacionProvinciaVehiculos::all();
 
         return view('livewire.editar-empresa',[
             'provincias' => $provincias

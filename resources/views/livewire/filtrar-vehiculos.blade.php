@@ -54,7 +54,7 @@
                 <div class="mb-5">
                     <label class="block mb-1 text-sm text-gray-700 uppercase font-bold"> Combustible</label>
                     <select wire:model="combustible" id="combustible"
-                    class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
+                    class=" border-gray-300 p-2 w-full">
                     <option value="">-Seleccione--</option>
                     <option value="Gasolina">Gasolina</option>
                     <option value="Diesel">Diesel</option>
@@ -64,10 +64,10 @@
                 </div>
             </div>
 
-            <div class="flex justify-end">
+            <div class="flex">
                 <input 
                     type="submit"
-                    class="bg-indigo-500 hover:bg-indigo-600 transition-colors text-white text-sm font-bold px-10 py-2 rounded cursor-pointer uppercase w-full md:w-auto"
+                    class="bg-indigo-500 hover:bg-indigo-600 transition-colors text-white text-sm font-bold px-10 py-2 rounded cursor-pointer uppercase w-full mx-5 "
                     value="Buscar"
                 />
             </div>

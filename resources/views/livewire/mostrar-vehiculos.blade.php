@@ -1,39 +1,43 @@
 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 space-y-6">
 
+    <livewire:filtrar-vehiculos />
 
 
-    <livewire:filtrar-vehiculos/>
-
-
-    <!-- Count of vehicles -->
-    <div class="bg-indigo-100 text-indigo-800 text-center text-lg font-semibold rounded-lg p-4 shadow-md">
-        Total Vehículos: <span class="text-indigo-600">{{ $vehiculos->count() }}</span>
+    <div class="flex justify-end">
+        <div class="bg-indigo-100 text-indigo-800 text-center text-lg font-semibold rounded-lg p-4 shadow-md">
+            Total Vehículos: <span class="text-indigo-600">{{ $vehiculos->count() }}</span>
+        </div>
     </div>
 
     @foreach ($vehiculos as $vehiculo)
-        <div class="p-6 bg-gray-100 rounded-lg shadow-md md:flex md:justify-between md:items-center">
+
+        @php
+            $EnunciadoIva = '';
+            $claseIVA = '';
+            if ($vehiculo->iva == 1) {
+                $EnunciadoIva = 'Con IVA';
+                $claseIVA = 'text-green-700 text-green-800';
+            } else {
+                $EnunciadoIva = 'Sin IVA';
+                $claseIVA = 'text-red-700 text-red-800';
+            }
+            $claseGarantiaActiva = '';
+            if ($vehiculo->garantia == 1) {
+                $claseGarantiaActiva = 'text-green-700 text-green-800';
+            } else {
+                $claseGarantiaActiva = 'text-red-700 text-red-800';
+            }
+        @endphp
+
+        <div class="p-6 bg-gray-100 rounded-lg shadow-md md:grid md:grid-cols-3 gap-5 md:justify-between md:items-center">
+
+            <div class="">
+                <img src="{{ asset('storage/vehiculos/' . $vehiculo->imagen) }}" alt="Imagen del Vehículo"
+                    class="w-full h-auto object-cover rounded-lg shadow">
+            </div>
 
 
-            @php
-                $EnunciadoIva = '';
-                $claseIVA = '';
-                if ($vehiculo->iva == 1) {
-                    $EnunciadoIva = 'Con IVA';
-                    $claseIVA = 'text-green-700 text-green-800';
-                } else {
-                    $EnunciadoIva = 'Sin IVA';
-                    $claseIVA = 'text-red-700 text-red-800';
-                }
-                $claseGarantiaActiva = '';
-                if ($vehiculo->garantia == 1) {
-                    $claseGarantiaActiva = 'text-green-700 text-green-800';
-                } else {
-                    $claseGarantiaActiva = 'text-red-700 text-red-800';
-                }
-            @endphp
-
-
-            <div>
+            <div class="">
                 <p class="text-gray-700"><strong>Marca:</strong> {{ $vehiculo->nombreMarca->marca }}
                     {{ $vehiculo->nombreModelo->nombre_modelo }}</p>
                 <p class="text-gray-700"><strong>Combustible:</strong> {{ $vehiculo->combustible }}</p>

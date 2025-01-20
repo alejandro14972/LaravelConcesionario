@@ -8,8 +8,10 @@ use Livewire\WithFileUploads;
 use App\Models\ModeloVehiculo;
 use App\Models\MarcasVehiculos;
 use App\Models\carrocerias_vehiculos;
+use App\Models\CarroceriasVehiculos;
 use App\Models\Etiqueta;
 use App\Models\ubicacion_provincia_vehiculos;
+use App\Models\UbicacionProvinciaVehiculos;
 use App\Models\Vehiculo;
 
 class EditarVehiculo extends Component
@@ -136,9 +138,9 @@ class EditarVehiculo extends Component
 
 
         //consultar bd para obtener las marcas de vehiculos
-        $carrocerias = carrocerias_vehiculos::all();
+        $carrocerias = CarroceriasVehiculos::all();
         $marcas = MarcasVehiculos::all();
-        $provincias = ubicacion_provincia_vehiculos::all();
+        $provincias = UbicacionProvinciaVehiculos::all();
         $modelos = ModeloVehiculo::all();
         $colores = ColorVehiculo::all();
         $etiquetas = Etiqueta::all();

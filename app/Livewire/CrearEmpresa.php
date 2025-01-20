@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Empresa;
 use App\Models\ubicacion_provincia_vehiculos;
+use App\Models\UbicacionProvinciaVehiculos;
 use Livewire\Component;
 
 class CrearEmpresa extends Component
@@ -44,7 +45,7 @@ class CrearEmpresa extends Component
     public function render()
     {
 
-        $provincias = ubicacion_provincia_vehiculos::all();
+        $provincias = UbicacionProvinciaVehiculos::all();
         
 
         return view('livewire.crear-empresa', [

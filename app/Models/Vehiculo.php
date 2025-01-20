@@ -48,7 +48,7 @@ class Vehiculo extends Model
 
     public function nombreCarroceria()
     {
-        return $this->belongsTo(carrocerias_vehiculos::class, 'carroceria_id');
+        return $this->belongsTo(CarroceriasVehiculos::class, 'carroceria_id');
     }
 
     public function nombreColor()
@@ -58,7 +58,7 @@ class Vehiculo extends Model
 
     public function nombreUbicacion()
     {
-        return $this->belongsTo(ubicacion_provincia_vehiculos::class, 'ubicacion_id');
+        return $this->belongsTo(UbicacionProvinciaVehiculos::class, 'ubicacion_id');
     }
 
     public function nombreUser()

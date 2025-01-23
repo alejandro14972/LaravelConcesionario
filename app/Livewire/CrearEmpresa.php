@@ -3,8 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Empresa;
-use App\Models\UbicacionProvinciaVehiculos;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use App\Models\UbicacionProvinciaVehiculos;
 
 class CrearEmpresa extends Component
 {
@@ -13,6 +14,9 @@ class CrearEmpresa extends Component
     public $direccion;
     public $telefono;
     public $email;
+    public $logo;
+
+    use WithFileUploads; //uso poara subir imagenes del form
 
 
     protected $rules = [
@@ -20,6 +24,7 @@ class CrearEmpresa extends Component
         'direccion' => 'required|numeric',
         'telefono' => 'required|numeric',
         'email' => 'required|email',
+        'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 
 
@@ -29,11 +34,16 @@ class CrearEmpresa extends Component
 
         //dd($datos);
 
+        //almacenarLogo
+        $logo = $this->logo->store('logos', 'public');
+        $nombreLogo = str_replace('logos/', '', $logo);
+
         $empresa = Empresa::create([
             'nombre' => $datos['titulo'],
             'direccion_id' => $datos['direccion'],
             'telefono' => $datos['telefono'],
             'email' => $datos['email'],
+            'logo' => $nombreLogo,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -43,10 +53,7 @@ class CrearEmpresa extends Component
 
     public function render()
     {
-
         $provincias = UbicacionProvinciaVehiculos::all();
-        
-
         return view('livewire.crear-empresa', [
             'provincias' => $provincias
         ]);

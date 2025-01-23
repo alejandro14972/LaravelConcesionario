@@ -7,10 +7,8 @@ use App\Models\ColorVehiculo;
 use Livewire\WithFileUploads;
 use App\Models\ModeloVehiculo;
 use App\Models\MarcasVehiculos;
-use App\Models\carrocerias_vehiculos;
 use App\Models\CarroceriasVehiculos;
 use App\Models\Etiqueta;
-use App\Models\ubicacion_provincia_vehiculos;
 use App\Models\UbicacionProvinciaVehiculos;
 use App\Models\Vehiculo;
 

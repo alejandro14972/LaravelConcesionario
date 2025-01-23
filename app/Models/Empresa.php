@@ -15,6 +15,7 @@ class Empresa extends Model
         'telefono',
         'email',
         'user_id',
+        'logo'
     ];
 
     //relaciones

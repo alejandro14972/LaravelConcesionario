@@ -32,7 +32,6 @@
             class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
             <option value="">-Seleccione--</option>
             @foreach ($etiquetas as $etiqueta)
-                
                 <option value="{{ $etiqueta->id }}">{{ $etiqueta->nombre }}
 
                 </option>

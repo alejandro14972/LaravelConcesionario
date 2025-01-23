@@ -16,8 +16,7 @@
 
                 <div>
                     <p class="text-gray-700"><strong>Nombre:</strong> {{ $empr->nombre }}</p>
-                    <p class="text-gray-700"><strong>Dirección:</strong> {{ $empr->direccion_id}}</p>
-                    {{-- <p class="text-gray-700"><strong>user:</strong> {{ $empr->user_id->user}}</p> --}}
+                    <p class="text-gray-700"><strong>Dirección:</strong> {{ $empr->nombreUbicacion->provincia}}</p>
                     <p class="text-gray-700"><strong>Telefono:</strong> {{ $empr->telefono }}</p>
                     <p class="text-gray-700"><strong>Email:</strong> {{ $empr->email }}</p>
                 </div>

@@ -9,9 +9,6 @@
     @endif
 
 
-
-
-
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 space-y-6">
 
         @foreach ($empresa as $empr)
@@ -19,18 +16,15 @@
 
                 <div>
                     <p class="text-gray-700"><strong>Nombre:</strong> {{ $empr->nombre }}</p>
-                    <p class="text-gray-700"><strong>Dirección:</strong> {{ $empr->direccion }}</p>
+                    <p class="text-gray-700"><strong>Dirección:</strong> {{ $empr->direccion_id}}</p>
+                    {{-- <p class="text-gray-700"><strong>user:</strong> {{ $empr->user_id->user}}</p> --}}
                     <p class="text-gray-700"><strong>Telefono:</strong> {{ $empr->telefono }}</p>
                     <p class="text-gray-700"><strong>Email:</strong> {{ $empr->email }}</p>
-
                 </div>
 
 
                 <div class="flex gap-3 mt-5 justify-center md:flex md:justify-center md:items-center">
-                    <a href="#" class="bg-green-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
-                        Ver
-                    </a>
-
+                    
                     <a href="{{ route('empresa.edit', $empr->id) }}"
                         class="bg-blue-800 py-2 px-4 text-white rounded hover:bg-slate-900 uppercase">
                         Editar

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('direccion');
+            $table->foreignId('direccion_id')->constrained('ubicacion_provincia_vehiculos')->onDelete('cascade');
             $table->string('telefono');
             $table->string('email');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
@@ -30,10 +30,11 @@ return new class extends Migration
 
         Schema::table('empresas', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['direccion_id']);
 
             $table->dropColumn([
                 'nombre',
-                'direccion',
+                'direccion_id',
                 'telefono',
                 'email',
                 'user_id'

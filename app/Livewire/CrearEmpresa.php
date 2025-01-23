@@ -39,7 +39,7 @@ class CrearEmpresa extends Component
         ]);
 
         session()->flash('mensajeEmpresa', 'Empresa creada correctamente');
-        return redirect()->route('empresa.index', $empresa->nombre);
+        return redirect()->route('empresa.index', '$empresa->nombre');
     }
 
     public function render()

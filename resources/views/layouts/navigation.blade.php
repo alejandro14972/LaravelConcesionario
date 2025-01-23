@@ -49,7 +49,7 @@
                         </x-dropdown-link>
 
                         @if ($empresaNavegacion && $empresaNavegacion->nombre)
-                            <x-dropdown-link :href="route('empresa.index', $empresaNavegacion->nombre)">
+                            <x-dropdown-link :href="route('empresa.index', '$empresaNavegacion->nombre')">
                                 {{ __($empresaNavegacion->nombre) }}
                             </x-dropdown-link>
                         @else
@@ -114,7 +114,7 @@
 
 
                 @if ($empresaNavegacion && $empresaNavegacion->nombre)
-                <x-responsive-nav-link :href="route('empresa.index', $empresaNavegacion->nombre)">
+                <x-responsive-nav-link :href="route('empresa.index', '$empresaNavegacion->nombre')">
                     {{ __($empresaNavegacion->nombre) }}
                 </x-responsive-nav-link>
             @else

@@ -26,10 +26,12 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('vehiculos', function (Blueprint $table) {
+            
             $table->dropForeign(['etiqueta_id']); // Elimina la clave foránea
+
             $table->dropColumn([
                 'cambio',
-                'num_pueras',
+                'num_puertas',
                 'etiqueta_id',
                 'iva',
                 'cc'

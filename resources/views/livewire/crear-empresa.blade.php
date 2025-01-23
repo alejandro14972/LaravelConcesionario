@@ -24,7 +24,7 @@
 
             <option value="">-Seleccione ubicacion--</option>
             @foreach ($provincias as $ubicacion)
-                <option value="{{ $ubicacion->id }}">{{ $ubicacion->provincia }}</option>
+                <option value={{ $ubicacion->id }}>{{ $ubicacion->provincia }}</option>
             @endforeach
         </select>
         @error('direccion')

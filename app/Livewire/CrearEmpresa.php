@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Empresa;
-use App\Models\ubicacion_provincia_vehiculos;
 use App\Models\UbicacionProvinciaVehiculos;
 use Livewire\Component;
 
@@ -12,7 +11,6 @@ class CrearEmpresa extends Component
 
     public $titulo;
     public $direccion;
-    public $provincia;
     public $telefono;
     public $email;
 
@@ -29,10 +27,11 @@ class CrearEmpresa extends Component
     {
         $datos = $this->validate();
 
+        //dd($datos);
+
         $empresa = Empresa::create([
             'nombre' => $datos['titulo'],
-            'direccion' => $datos['direccion'],
-
+            'direccion_id' => $datos['direccion'],
             'telefono' => $datos['telefono'],
             'email' => $datos['email'],
             'user_id' => auth()->user()->id,

@@ -57,28 +57,28 @@
     </div>
 
 
-{{--      <div>
+     <div>
         <x-input-label for="imagen" :value="__('Imagen')" />
         <x-text-input id="imagen" 
             class="block mt-1 w-full" 
             type="file" 
-            wire:model="imagen" 
+            wire:model="logo" 
             accept="image/*" />
 
 
 
 
          <div class="my-5">
-            @if ($imagen)
-                Imagen:
-                <img src="{{$imagen->temporaryUrl()}}">
+            @if ($logo)
+                Logo:
+                <img src="{{$logo->temporaryUrl()}}">
             @endif
         </div> 
 
-        @error('imagen')
+        @error('logo')
             <span class="text-red-500">{{ $message }}</span>
         @enderror
-    </div>  --}}
+    </div> 
 
     <x-primary-button class="w-full justify-center ">
         {{ __('Crear empresa') }}

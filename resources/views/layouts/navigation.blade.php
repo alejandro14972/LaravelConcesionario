@@ -49,7 +49,12 @@
                         </x-dropdown-link>
 
                         @if ($empresaNavegacion && $empresaNavegacion->nombre)
-                            <x-dropdown-link :href="route('empresa.index', '$empresaNavegacion->nombre')">
+
+                        @php
+                            $n = urlencode($empresaNavegacion->nombre); 
+                        @endphp
+
+                            <x-dropdown-link :href="route('empresa.index', $n)">
                                 {{ __($empresaNavegacion->nombre) }}
                             </x-dropdown-link>
                         @else
@@ -114,8 +119,8 @@
 
 
                 @if ($empresaNavegacion && $empresaNavegacion->nombre)
-                <x-responsive-nav-link :href="route('empresa.index', '$empresaNavegacion->nombre')">
-                    {{ __($empresaNavegacion->nombre) }}
+                <x-responsive-nav-link :href="route('empresa.index', $n)">
+                    {{ __($n) }}
                 </x-responsive-nav-link>
             @else
                 <x-responsive-nav-link :href="route('empresa.create')">

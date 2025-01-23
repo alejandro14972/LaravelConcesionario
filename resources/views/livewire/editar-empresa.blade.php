@@ -57,28 +57,36 @@
     </div>
 
 
-{{--      <div>
-        <x-input-label for="imagen" :value="__('Imagen')" />
-        <x-text-input id="imagen" 
-            class="block mt-1 w-full" 
-            type="file" 
-            wire:model="imagen" 
+    <div>
+        <x-input-label for="logo" :value="__('Imagen')" />
+        <x-text-input id="logo" class="block mt-1 w-full" type="file" wire:model="logo_nuevo"
             accept="image/*" />
 
 
+        <div class="my-5 w-80">
+            <x-input-label :value="__('Imagen actual')" />
+
+            {{-- <img src="{{ asset('storage/vehiculos/' . $imagen) }}" alt="{{'Imagen ' . $titulo}}" class="w-80"> --}}
+            <img src="{{ asset('storage/logos') . '/' . $logo }}" alt="Imagen logo"
+                class="w-80">
+
+        </div>
 
 
-         <div class="my-5">
-            @if ($imagen)
+
+        {{-- vista de la imagen temporal --}}
+        <div class="my-5">
+            @if ($logo_nuevo)
                 Imagen:
-                <img src="{{$imagen->temporaryUrl()}}">
+                <img src="{{ $logo_nuevo->temporaryUrl() }}">
             @endif
-        </div> 
+        </div>
 
-        @error('imagen')
+
+        @error('logo_nuevo')
             <span class="text-red-500">{{ $message }}</span>
         @enderror
-    </div>  --}}
+    </div>
 
     <x-primary-button class="w-full justify-center ">
         {{ __('Editar empresa') }}

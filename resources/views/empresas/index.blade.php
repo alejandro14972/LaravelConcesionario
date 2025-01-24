@@ -9,26 +9,22 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             @if (@session()->has('mensaje'))
-                
-            <div class="bg-green-500 p-2 text-white rounded mb-4">
-                {{ session('mensaje') }}
-            </div>  
+                <div class="bg-green-500 p-2 text-white rounded mb-4">
+                    {{ session('mensaje') }}
+                </div>
             @endif
 
 
-            
+
             @if (@session()->has('error'))
-                
-            <div class="bg-red-500 p-2 text-white rounded mb-4">
-                {{ session('error') }}
-            </div>  
+                <div class="bg-red-500 p-2 text-white rounded mb-4">
+                    {{ session('error') }}
+                </div>
             @endif
 
 
-     {{--        <livewire:mostrar-vehiculos /> --}}
+            <livewire:mostrar-mi-empresa />
 
-     <livewire:mostrar-mi-empresa />
-            
         </div>
     </div>
 </x-app-layout>

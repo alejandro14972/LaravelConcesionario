@@ -12,9 +12,29 @@ class EmpresaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('empresas.index');
+{
+    $empresa = Empresa::where('user_id', auth()->id())->first();
+
+    // Si no hay empresa asociada
+    if (!$empresa) {
+        session()->flash('mensajeError', 'No tiene empresas asociadas.');
+        return redirect()->route('vehiculos.index'); // Cambia por la ruta que tenga sentido en tu app
     }
+    
+    // Verifica el permiso con Gate
+    if (Gate::allows('view', $empresa)) {
+        return view('empresas.index', [
+            'nombre' => $empresa->nombre,
+            'empresa' => $empresa,
+        ]);
+    } else {
+        session()->flash('error', 'No tiene acceso a ver esta empresa');
+        // Redirige con el parámetro `nombre`
+        return redirect()->route('empresa.index', ['nombre' => $empresa->nombre]);
+    }
+}
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -35,9 +55,9 @@ class EmpresaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Empresa $empresa)
     {
-        //
+        
     }
 
     /**
@@ -51,7 +71,7 @@ class EmpresaController extends Controller
             ]);
         }else{
             session()->flash('error', 'No tiene acceso a editar esta empresa');
-            return redirect()->route('empresa.index');
+            return redirect()->route('empresa.index', $empresa->nombre);
         }
     }
 

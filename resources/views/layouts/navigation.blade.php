@@ -51,7 +51,7 @@
                         @if ($empresaNavegacion && $empresaNavegacion->nombre)
 
                         @php
-                            $n = urlencode($empresaNavegacion->nombre); 
+                            $n = $empresaNavegacion->nombre; 
                         @endphp
 
                             <x-dropdown-link :href="route('empresa.index', $n)">

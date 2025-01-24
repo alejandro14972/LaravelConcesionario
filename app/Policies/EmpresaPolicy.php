@@ -21,7 +21,8 @@ class EmpresaPolicy
      */
     public function view(User $user, Empresa $empresa): bool
     {
-        return false;
+        //return false;
+        return $user->id === $empresa->user_id;
     }
 
     /**

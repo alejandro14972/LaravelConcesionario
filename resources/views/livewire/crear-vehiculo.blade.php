@@ -99,13 +99,12 @@
     </div>
 
 
+    {{-- dinámico--}}
 
     <div>
         <x-input-label for="marca" :value="__('Marca')" />
-        <select wire:model="marca" id="marca"
+        <select wire:model.live="marca" id="marca"
             class=" border-gray-300 dark:border-gray-700  rounded-md shadow-sm w-full">
-
-
             <option value="">-Seleccione--</option>
             @foreach ($marcas as $marca)
                 <option value="{{ $marca->id }}">{{ $marca->marca }}</option>
@@ -121,7 +120,9 @@
         <x-input-label for="modelo" :value="__('Modelo')" />
         <select wire:model="modelo" id="modelo"
             class="border-gray-300 dark:border-gray-700 rounded-md shadow-sm w-full">
-            <option value="">-Seleccione--</option>
+            @if ($modelos->count() == 0)
+                <option value="">-Seleccione--</option>
+            @endif
             @foreach ($modelos as $modelo)
                 <option value="{{ $modelo->id }}">{{ $modelo->nombre_modelo }}</option>
             @endforeach
@@ -130,6 +131,7 @@
             <span class="text-red-500">{{ $message }}</span>
         @enderror
     </div>
+
 
 
     <div>

@@ -8,8 +8,6 @@ use Livewire\Component;
 use App\Models\ColorVehiculo;
 use Livewire\WithFileUploads;
 use App\Models\ModeloVehiculo;
-
-
 use App\Models\CarroceriasVehiculos;
 use App\Models\Etiqueta;
 use App\Models\MarcasVehiculos;
@@ -38,6 +36,11 @@ class CrearVehiculo extends Component
     public $puertas;
     public $cambio = 0;
 
+    //atributos inputs dinamicos
+    public $marcas;
+    public $modelos = [];
+
+
 
     use WithFileUploads; //uso poara subir imagenes del form
 
@@ -65,19 +68,54 @@ class CrearVehiculo extends Component
     ];
 
 
+    public function mount()
+    {
+        $this->marcas = MarcasVehiculos::all();
+        $this->modelos = collect();
+    }
+
+    public function updatedMarca($value)
+    {
+        dd($value);
+    
+
+
+            $this->modelos = ModeloVehiculo::where('marca_id', $value)->get();
+
+            // Si hay modelos, asignar el primer modelo disponible
+            if ($this->modelos->count() > 0) {
+                $this->modelo = $this->modelos->first()->id; // Asignar el primer modelo
+            } else {
+                $this->modelo = null; // Ningún modelo disponible
+            }
+        
+    }
+
+
+
+    public function render()
+    {
+        $carrocerias = CarroceriasVehiculos::all();
+        $provincias = UbicacionProvinciaVehiculos::all();
+        $colores = ColorVehiculo::all();
+        $etiquetas = Etiqueta::all();
+
+        return view('livewire.crear-vehiculo', [
+            'carrocerias' => $carrocerias,
+            'provincias' => $provincias,
+            'colores' => $colores,
+            'etiquetas' => $etiquetas,
+        ]);
+    }
+
+
     public function crearVehiculo()
     {
 
         $datos = $this->validate();
-        // dd($datos); 
-        //alamcenar imagen
         $imagen = $this->imagen->store('vehiculos', 'public');
-        //dd($imagen);
         $nombreImg = str_replace('vehiculos/', '', $imagen);
-        //dd($imagen);
-        //dd($nombreImg);
 
-        //crear vehiculo
         Vehiculo::create([
             'titulo' => $datos['titulo'],
             'combustible' => $datos['combustible'],
@@ -93,8 +131,8 @@ class CrearVehiculo extends Component
             'imagen' => $nombreImg,
             'user_id' => auth()->user()->id,
             'cv' => $datos['cv'],
-            'garantia' => $datos['garantia'],// Guardar el valor del checkbox
-            'cc' =>$datos['cc'],
+            'garantia' => $datos['garantia'],
+            'cc' => $datos['cc'],
             'iva' => $datos['iva'],
             'etiqueta_id' => $datos['etiqueta'],
             'num_puertas' => $datos['puertas'],
@@ -102,34 +140,7 @@ class CrearVehiculo extends Component
         ]);
 
         //crear mensaje de exito
-        //session()->flash('mensaje', 'Vehiculo creado con exito');
         session()->flash('alerta', '¡Vehículo creado con éxito!');
-
-        //redirect a la pagina de inicio
         return redirect()->route('vehiculos.index');
-    }
-
-
-    public function render()
-    {
-
-        //consultar bd para obtener las marcas de vehiculos
-        $carrocerias = CarroceriasVehiculos::all();
-        $marcas = MarcasVehiculos::all();
-        $provincias = UbicacionProvinciaVehiculos::all();
-        $modelos = ModeloVehiculo::all();
-        $colores = ColorVehiculo::all();
-        $etiquetas = Etiqueta::all();
-
-
-        return view('livewire.crear-vehiculo', [
-            'marcas' => $marcas,
-            'carrocerias' => $carrocerias,
-            'provincias' => $provincias,
-            'modelos' => $modelos,
-            'colores' => $colores,
-            'etiquetas' => $etiquetas,
-
-        ]);
     }
 }

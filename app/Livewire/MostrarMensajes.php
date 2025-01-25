@@ -7,7 +7,14 @@ use Livewire\Component;
 
 class MostrarMensajes extends Component
 {
-    public $vehiculoIdentificador; // ID del vehículo
+    protected $vehiculoIdentificador; // ID del vehículo
+    
+
+    public function mount($vehiculoIdentificador)
+    {
+        // Asigna el valor al cargar el componente
+        $this->vehiculoIdentificador = $vehiculoIdentificador;
+    }
 
     public function render()
     {

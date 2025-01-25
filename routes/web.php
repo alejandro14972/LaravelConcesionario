@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\contactaController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehiculoController;
@@ -19,6 +20,9 @@ Route::get('/vehiculos/{vehiculo}', [VehiculoController::class, 'show'])->middle
 Route::get('/empresa/create', [EmpresaController::class, 'create'])->middleware(['auth', 'verified'])->name('empresa.create'); //influye el orden de las rutas !!!!!!!
 Route::get('/empresa/{nombre}', [EmpresaController::class, 'index'])->middleware(['auth', 'verified'])->name('empresa.index');
 Route::get('/empresa/{empresa}/edit', [EmpresaController::class, 'edit'])->middleware(['auth', 'verified'])->name('empresa.edit');
+
+//contactar
+//Route::post('/comentario',[contactaController::class, 'store'])->name('comentarios.store');
 
 
 Route::middleware('auth')->group(function () {

@@ -76,10 +76,8 @@ class CrearVehiculo extends Component
 
     public function updatedMarca($value)
     {
-        dd($value);
+        //dd($value);
     
-
-
             $this->modelos = ModeloVehiculo::where('marca_id', $value)->get();
 
             // Si hay modelos, asignar el primer modelo disponible
